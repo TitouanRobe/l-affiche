@@ -14,23 +14,11 @@ from pydantic import BaseModel
 
 
 # Informations de connexion à la base de données PostgreSQL
-
-conn = psycopg2.connect(
-        user = "kergangbreizh",
-        password = "KatapulteGabin44!",
-        host = "servbdd",
-        port = "5432",
-        database = "pg_kergangbreizh"
-)
-cur = conn.cursor()
-
-
-# Informations de connexion à la base de données PostgreSQL
-db_host = "servbdd"
+db_host = "
 db_port = 5432
-db_database = "pg_kergangbreizh"
-db_username = "kergangbreizh"
-db_password = "KatapulteGabin44!"
+db_database = ""
+db_username = ""
+db_password = ""
 
 # Connexion a la base via create engine
 db_url = f"postgresql://{db_username}:{db_password}@{db_host}:{db_port}/{db_database}"
