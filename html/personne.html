@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+  <header class="en-tete-image" style="background-image: url('');">
+    <div class="en-tete-image--degrade recherche"></div>
+    <div class="en-tete-image--contenu recherche">
+
+    <a href="./accueil.html" class="retour_accueil"><h1>L'AFFICHE</h1></a>
+    
+    <form action="./recherche.html" method="get">
+        <div class="en-tete-image--flex">
+            <div class="en-tete-image--input">
+                <img src="pictures/search-line.svg" alt="Icone Rechercher">
+                <input type="text" placeholder="Rechercher un film" name="recherche" required>
+            </div>
+        </div>
+    </form>
+
+    <div class="bloc-personne">
+        <img src="" alt="Poster personne" class="poster-personne">
+        <h2>Prenom nom</h2>
+    </div>
+  </header>
+
+  <main class="details-personne">
+
+      <h3>Films dans lequel ... a participé </h3>
+
+      <div class="films-personne">
+
+      </div>
+  </main>
+
+
+
+
+</body>
+</html>
+
+<script>
+    function getPersonneInfo(id_personne) {
+        var xhr = new XMLHttpRequest();
+        var url = 'http://127.0.0.1:8000/get_movies_personne/' + id_personne;
+        
+        xhr.open('GET', url);
+        xhr.onreadystatechange = function() {
+          if (xhr.readyState === 4) {
+            var response = JSON.parse(xhr.responseText);
+      
+            //console.log(response)
+            chargerInfosPersonne(response, id_personne)
+          }
+        };
+        xhr.send();
+      }
+
+    // Récupérez les paramètres d'URL
+    const paramètres = window.location.search;
+
+    // Accédez aux paramètres d'URL
+    const paramètresObjet = new URLSearchParams(paramètres);
+
+    // Imprimez la valeur du paramètre "id"
+    var id_personne = paramètresObjet.get("id_personne")
+
+    getPersonneInfo(id_personne)
+
+
+    function chargerInfosPersonne(data, id_personne){
+
+      let attributs_personne = data[id_personne]
+      let movies = data["films"]
+
+      nom_personne = `${attributs_personne["prenom"]} ${attributs_personne["nom"]}`
+
+      document.title = nom_personne
+
+      let titre_bloc_personne = document.querySelector(".bloc-personne h2")
+      titre_bloc_personne.textContent = nom_personne
+
+      let portrait_img = document.querySelector(".bloc-personne img")
+      portrait_img.src = attributs_personne["poster"]
+
+      let titre_films = document.querySelector(".details-personne h3")
+      titre_films.textContent = `Films dans lequel ${nom_personne} a participé`
+      
+
+      chargerFilmsPersonne(movies)
+    }
+
+    function chargerFilmsPersonne(movies){
+
+      console.log(movies)
+
+      id_movies = []
+
+      movies.forEach(movie => {
+
+
+        if (!id_movies.includes(movie["id"])){
+
+          id_movies.push(movie["id"])
+
+          let carte_film = document.createElement("a")
+          carte_film.setAttribute("class", "carte_film")
+          //carte_film.attr("src", `./movie.html?id_film=${attributs["ID"]}`) 
+          carte_film.setAttribute("href", `./movie.html?id_film=${movie["id"]}`)
+
+          let poster = document.createElement("img")
+          poster.src = movie["poster"]
+
+          let titre_bloc = document.createElement("h3")
+          titre_bloc.textContent = movie["titre"]
+
+
+          carte_film.appendChild(poster)
+          carte_film.appendChild(titre_bloc)
+
+          let carte_film_infos = document.createElement("ul")
+          carte_film_infos.setAttribute("class", "carte-film--bloc")
+
+
+          for (genre of movie["genres"]){
+
+            let li = document.createElement("li")
+            li.textContent = genre
+
+            carte_film_infos.appendChild(li)
+          }
+
+          carte_film.appendChild(carte_film_infos)
+
+          let note = movie["note"]
+          note = parseFloat(note) * 10
+
+          let carteFilmStats = document.createElement("div"); 
+          carteFilmStats.className = "carte_film--stats"; 
+
+          let barContainer = document.createElement("div"); 
+          barContainer.className = "carte_film--bar-container"; 
+
+          let barRouge = document.createElement("div"); 
+          barRouge.className = "carte_film--bar carte_film--bar__rouge"; 
+
+          let barVert = document.createElement("div"); 
+          barVert.className = "carte_film--bar carte_film--bar__vert"; 
+          barVert.style.width = `${note}%`; 
+
+          let likesContainer = document.createElement("div"); 
+          likesContainer.className = "carte_film--likes"; 
+
+          let greenLikeImg = document.createElement("img"); 
+          greenLikeImg.src = "./pictures/green_like.svg"; 
+          greenLikeImg.alt = "green like"; 
+
+          let percentageText = document.createElement("p"); 
+          percentageText.textContent = `Recommandé à ${note}%`; 
+
+          let redDislikeImg = document.createElement("img"); 
+          redDislikeImg.src = "./pictures/red_dislike.svg"; 
+          redDislikeImg.alt = "red dislike"; 
+
+          // Construction de la structure 
+          barContainer.appendChild(barRouge); 
+          barContainer.appendChild(barVert); 
+          likesContainer.appendChild(greenLikeImg); 
+          likesContainer.appendChild(percentageText); 
+          likesContainer.appendChild(redDislikeImg); 
+          carteFilmStats.appendChild(barContainer); 
+          carteFilmStats.appendChild(likesContainer); 
+
+          carte_film.appendChild(carteFilmStats)
+
+          document.querySelector(".films-personne").appendChild(carte_film)
+        } 
+
+
+
+      });
+    }
+</script>

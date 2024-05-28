@@ -1,0 +1,933 @@
+@font-face 
+{
+    font-family: Hind;
+    src: url(./polices/Hind-Regular.ttf);
+    font-weight: 400;
+}
+
+@font-face 
+{
+    font-family: Hind;
+    src: url(./polices/Hind-Light.ttf);
+    font-weight: 200;
+}
+
+@font-face
+{
+    font-family: ADAM;
+    src: url(./polices/ADAM.CG\ PRO.otf);
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Hind;
+    min-height: 100vh;
+    background-color: #1C2833;
+}
+
+.en-tete-image--flex {
+    display: flex;
+    gap: 20px;
+    text-align: center;
+}
+
+.en-tete-image {
+    position: relative;
+    height: 500px;
+    width: 100%;
+    box-sizing: border-box;
+    background-position: top;
+    background-size: cover;
+    padding: 20px 50px;
+    color: white;
+    font-family: 'Hind';
+}
+
+.en-tete-image--input{
+    position: absolute;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%); 
+}
+
+.en-tete-image--input input {
+    height: 50px;
+    width: 400px;
+    border-radius: 10px;
+    border: none;
+    padding-left: 55px;
+    font-size: 20px;
+    box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.4);
+}
+
+.en-tete-image--input img {
+    position: absolute;
+    top: 50%;
+    left: 15px;
+    height: 25px;
+    width: 25px;
+    transform: translateY(-50%);
+}
+
+.bloc-film {
+    display: flex;
+    flex-direction: row;
+    gap: 30px;
+    margin-top: 200px;
+  }
+  
+  
+  .bloc-film-infos {
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Pour centrer verticalement les éléments à l'intérieur du conteneur */
+    width: 100%;
+    flex-wrap: wrap;
+  }
+  
+
+  
+  .bloc-infos {
+    display: flex;
+    justify-content: space-between;
+    font-size: 25px;
+    margin-left: 10px;
+    margin-bottom: 20px;
+  }
+
+.bloc-infos .genres ul{
+
+    display: flex;
+    gap: 20px;
+    padding-left: 0;
+    margin-top: 10px;
+}
+
+.bloc-infos .genres li{
+
+    background-color: #1C2833;
+    border: 1px solid #fff;
+    border-radius: 10px;
+    padding: 0 15px;
+    list-style-type: none;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.bloc-infos .genres li:hover{
+
+    background-color: #fff;
+    border: 1px solid #1C2833;
+    color: #1C2833;
+}
+
+.bloc-note{
+
+    float: right;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    position: relative;
+    right: 10px ;
+    margin-bottom: 10px;
+  }
+
+  .bloc-me-noter, .bloc-nb-vues, .note-uti{
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2px 10px;
+    background-color: #1C2833;
+    border: 1ps solid #fff;
+    border-radius: 10px;
+    font-size: 20px;
+    border: 1px solid #fff;   
+  }
+
+  .bloc-me-noter, .bloc-infos li{
+
+    cursor: pointer;
+  }
+
+  .bloc-me-noter p{
+
+    margin: 0;
+  }
+
+  .bloc-me-noter img{
+
+    width: 22px;
+    height: auto;
+    padding-right: 5px;
+    padding-bottom: 5px;
+  }
+
+  .bloc-me-noter:hover{
+
+    background-color: #fff;
+    border: 1px solid #1C2833;
+    color: #1C2833;
+  }
+  
+
+
+.container {
+
+    height: 50px;
+    width: 50px;
+    position: relative;
+    transform: translate(-50%, -50%);
+    border-radius: 8px;
+    box-shadow: 20px 20px 40px rgba(27, 81, 26, 0.25);
+    display: grid;
+    place-items: center;
+    margin-top: 25px;
+    top: 10px;
+    left: 30px;
+  }
+  .circular-progress {
+
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+  }
+  .circular-progress:before {
+    content: "";
+    position: absolute;
+    height: 84%;
+    width: 84%;
+    background-color: #fff;
+    border-radius: 50%;
+  }
+  .value-container {
+    position: relative;
+    font-family: "Poppins", sans-serif;
+    font-size: 15px;
+    color: #45cf42;
+    font-weight: bold;
+  }
+
+
+
+.poster-film{
+
+    max-width: 260px;
+    max-height: 340px;
+    border-radius: 20px;
+    object-fit: contain;
+    display: block;
+}
+
+.poster-film-container {
+    position: relative;
+    border-radius: 20px;
+  }
+  
+  
+  /* Overlay semi-transparent pour assombrir au survol */
+  .poster-film-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Couleur de fond semi-transparente */
+    opacity: 0; /* Initialement invisible */
+    transition: opacity 0.3s ease; /* Ajout d'une transition pour une animation fluide */
+    border-radius: 20px;
+  }
+  
+  /* Afficher l'overlay au survol de la souris */
+  .poster-film-container:hover::before {
+    opacity: 1;
+  }
+
+.titre-film{
+
+    font-family: ADAM;
+    font-size: 60px;
+    margin-bottom: 0;
+}
+
+.supplement-titre{
+    display: flex;
+    gap: 5px;
+    color: #000;
+    margin-left: 10px;
+    font-weight: bold;
+    font-size: 18px;
+    font-family: Hind;
+    background-color: #1C2833;
+    color: #ffff;
+    border: 1px solid #fff;
+    width: fit-content;
+    border-radius: 10px;
+    padding: 1px 5px;
+}
+
+.details-film h3{
+
+    margin-top: -20px;
+}
+
+.details-film ul{
+
+    padding: 0;
+    list-style-type: none;
+
+}
+
+.details-film span{
+
+    color: #fff;
+    padding: 10px;
+    font-weight: bold;
+}
+
+.details-film .ligne{
+
+    display: flex;
+    border-top-width: 1px;
+    border-top-style: solid;
+    border-color: #c0b9b9;
+}
+
+.details-film li ul{
+    display: inline-flex;
+    padding: 10px;
+    border-top-style: none;
+}
+
+.details-film li ul li{
+
+    padding: 0 5px;
+    color: #D90429;
+    width: max-content;
+}
+
+.genres ul li a {
+
+    color: #fff;
+    text-decoration: none;
+}
+
+.genres ul li a:hover{
+
+    color: #1C2833;
+}
+
+.ligne:nth-child(3){
+
+    border-bottom-style: solid;
+    border-bottom-width: 1px;
+}
+
+.bloc-synopsys{
+
+    margin-left: 25%;
+    color: #fff;
+    padding-right: 40px;
+}
+
+.bloc-synopsys h5{
+
+    font-size: 20px;
+    margin: 10px 0;
+}
+
+.distribution, .bloc-recommandations{
+
+    margin: 0 50px;    
+}
+
+.distribution h3, .bloc-recommandations h3{
+
+    color: #fff;
+    font-weight: bold;
+    font-family: ADAM;
+    margin-bottom: 30px;
+    font-size: 20px;
+}
+
+.bloc-recommandations h3, .nom-directeur{
+
+    margin-top: 30px;
+}
+
+.distribution-personnes{
+
+    display: flex;
+    gap: 60px;
+    overflow-x: scroll;
+    padding-bottom: 20px;
+}
+
+/* Pour Chrome, Safari, et navigateurs basés sur WebKit */
+.distribution-personnes::-webkit-scrollbar, .recommendations::-webkit-scrollbar, .films-personne::-webkit-scrollbar {
+    width: 12px; /* Largeur de la scrollbar */
+    height: 10px;
+}
+
+.distribution-personnes::-webkit-scrollbar-thumb, .recommendations::-webkit-scrollbar-thumb, .films-personne::-webkit-scrollbar-thumb {
+    background-color: #131b22; /* Couleur de la poignée (thumb) de la scrollbar */
+    border-radius: 6px; /* Coins arrondis de la poignée */
+}
+
+.distribution-personnes::-webkit-scrollbar-track, .recommendations::-webkit-scrollbar-track, .films-personne::-webkit-scrollbar-track {
+    background-color: #f1f1f1; /* Couleur de la piste (track) de la scrollbar */
+    border-radius: 7px;
+}
+
+.carte-personne{
+
+    position: relative;
+    display: block;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+    border-radius: 20px;
+    text-align: center;
+    font-family: Hind;
+    width: min-content;
+    color: black;
+    text-decoration: none;
+    background-color: #fff;
+    width: 180px;
+    flex: 0 0 auto;
+    box-sizing: border-box;
+    transition: 0.3s opacity ease-out;
+}
+
+.carte-personne:hover, .carte_film:hover{
+
+    opacity: 0.5;
+}
+
+.carte-personne h5{
+    margin: 0;
+    font-size: 16px;
+}
+
+.carte-personne p{
+    margin: 0;
+    margin-bottom: 5px;
+    font-size: 15px;
+}
+
+.carte-personne img{
+
+    width: 100%; /* Pour s'assurer que l'image occupe la largeur du conteneur */
+    height: 200px; /* Pour s'assurer que l'image occupe la hauteur du conteneur */
+    object-fit: cover;
+    border-top-right-radius: 20px;
+    border-top-left-radius: 20px;
+}
+
+.bloc-recommandations{
+
+    padding: 20px 0;
+}
+
+.recommendations, .recommendations.directeur, .films-personne {
+    display: flex;
+    gap: 60px;
+    overflow-x: scroll;
+    padding-bottom: 20px;
+}
+
+.recommendations+h3{
+    margin-top: 20px;
+}
+
+.aucun_film{
+
+    font-family: Hind;
+    font-size: 18px;
+    color: #fff;
+    margin-left: 20px;
+}
+
+.carte_film img{
+
+    width: 250px;
+    height: auto;
+    border-top-right-radius: 20px;
+    border-top-left-radius: 20px;
+}
+
+
+.carte_film
+{
+    position: relative;
+    display: block;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+    border-radius: 20px;
+    text-align: center;
+    font-family: Hind;
+    width: min-content;
+    color: black;
+    text-decoration: none;
+    background-color: #fff;
+    transition: 0.3s opacity ease-out;
+    cursor: pointer;
+}
+
+.carte-film--bloc{
+
+    display: flex;
+    justify-content: center;
+    gap: 5px;
+    font-size: 15px;
+    font-weight: 200;
+    color: #131b22;
+    margin-top: 0;
+}
+
+
+.carte_film--stats {
+    position: relative;
+    width: calc(100% - 20px);
+    bottom: 10px;
+    padding-left: 10px;
+}
+
+.carte_film--bloc > p {
+    margin-bottom: 65px;
+}
+
+.carte_film h3
+{
+    font-size: 22px;
+    margin: 0;
+    line-height: 1.3;
+    font-family: Hind;
+    color: #000;
+}
+
+.carte_film--bar-container
+{
+    position: relative;
+    margin: 0 10px;
+}
+
+.carte_film--bar
+{
+    height: 3px;
+    border-radius: 5px;
+    position: absolute;
+    width: 100%;
+}
+
+.carte_film--bar__vert
+{
+    background-color: #45cf42;
+}
+
+.carte_film--bar__rouge
+{
+    background-color: #D90429;
+}
+
+.carte_film--likes
+{
+    display: flex;
+    justify-content: space-between;
+    color: rgb(140, 140, 140);
+    padding: 0 10px;
+    font-size: 13px;   
+}
+
+.carte_film--likes img{
+
+    width: 20px;
+    height: auto;
+}
+
+.en-tete-image {
+    position: relative;
+    height: 500px;
+    width: 100%;
+    box-sizing: border-box;
+    background-position: top;
+    background-size: cover;
+    padding: 20px 50px;
+    color: white;
+    font-family: 'Hind';
+}
+
+
+.en-tete-image--degrade {
+    z-index: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-image: linear-gradient(180deg, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.15) 100%);
+}
+
+.en-tete-image--contenu {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    height: 100%;
+}
+
+.en-tete-image--navbar {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.en-tete-image--navbar h1 {
+    font-size: 32px;
+}
+
+.en-tete-image--navbar h1 a {
+    color: white;
+}
+
+.en-tete-image--navbar h1 a:hover {
+    text-decoration: none;
+}
+
+.en-tete-image--navbar .connexion {
+    font-family: 'Hind', sans-serif;
+    border: 1px solid #fff;
+    text-align: center;
+    border-radius: 10px;
+    padding: auto 15px;
+}
+
+.main__recherche h3{
+
+    text-align: center;
+    font-family: Hind;
+    color: #f1f1f1;
+    font-size: 25px;
+    margin-top: 20px;
+}
+
+.films_recherche {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 60px;
+    justify-content: center;
+    padding-bottom: 20px;
+}
+
+.films_recherche .carte-film--bloc{
+
+    list-style-type: none;
+    padding: 0;
+}
+
+.films_recherche h3{
+    color: #000;
+}
+
+/* Popup */
+
+.popup .overlay{
+
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 5;
+    display: none;
+}
+
+.popup .content{
+
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%) scale(0);
+    background-color: #1C2833;
+    width: 450px;
+    height: 220px;
+    z-index: 6;
+    text-align: center;
+    padding: 20px;
+    box-sizing: border-box;
+    border-radius: 10px;
+}
+
+.popup .close-btn{
+
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    width: 30px;
+    height: 30px;
+    background-color: #fff;
+    color: #1C2833;
+    font-size: 30px;
+    font-weight: 600;
+    line-height: 30px;
+    text-align: center;
+    border-radius:5px;
+    padding-top: 3px;
+    cursor: pointer;
+}
+
+.popup.active .overlay{
+
+    display: block;
+}
+
+.popup.active .content{
+
+    transition: all 300ms ease-in-out;
+    transform: translate(-50%, -50%) scale(1);
+}
+
+.star{
+    gap: 5px;
+}
+
+.star img{
+
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+}
+
+#noter-film{
+
+    width: max-content;
+    width: 340px;
+    margin-top: 20px;
+    height: 30px;
+    font-family: Hind;
+    color: #fff;
+    font-size: 18px;
+    border-radius: 10px;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    border: none;
+    cursor: not-allowed;
+}
+
+.popup h3 {
+
+    font-family: Hind;
+    color: #fff;
+}
+
+/* Recherche */ 
+
+.en-tete-image--degrade.recherche, .en-tete-image--contenu.recherche{
+
+    height: 450px;
+}
+
+/* ------------- PAGE PERSONNE ------------- */
+
+.bloc-personne {
+    display: flex;
+    flex-direction: row;
+    gap: 30px;
+    margin-top: 200px;
+    align-items: center;
+}
+
+.bloc-personne h2{
+
+    font-family: ADAM;
+    font-size: 60px;
+    padding-bottom: 30px;
+}
+
+.poster-personne{
+
+    max-width: 220px;
+    max-height: 300px;
+    border-radius: 20px;
+    object-fit: contain;
+}
+
+.details-personne{
+
+    margin-top: 50px;
+    margin-bottom: 30px;
+    margin-left: 50px;
+}
+
+.details-personne h3{
+
+    font-family: ADAM;
+    font-size: 20px;
+    color: #fff;
+}
+
+.films-personne{
+
+    margin-right: 40px;
+}
+
+.films-personne .carte_film h3{
+
+    color: #000;
+    font-family: Hind;
+}
+
+.films-personne .carte-film--bloc{
+
+    list-style-type: none;
+    padding: 0;
+}
+
+.icon-container {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 10px; /* Ajoutez un padding pour l'espacement entre l'icône et le bord du conteneur */
+    opacity: 0; /* Initialement invisible */
+    transition: opacity 0.3s ease; /* Ajout d'une transition pour une animation fluide */
+    width: 50px;
+    height: 50px;
+  }
+  
+  /* Afficher l'icône seulement au survol de la souris */
+  .poster-film-container:hover .icon-container {
+    opacity: 1;
+  }
+
+  .icon-container:hover{
+    cursor: pointer;
+  }
+
+  /* genre */ 
+
+  .content-container{
+
+    margin-top: -500px;
+  }
+
+  .retour_accueil {
+
+    position: absolute;
+    top: 0px;
+    left: 0;
+    font-family: ADAM;
+    font-size: 20px;
+    color: #fff;
+    text-decoration: none;
+  }
+  
+  .bloc_aucun_res{
+  
+	font-size : 20px;
+	color : #fff;
+	font-family : Hind;
+}
+
+
+.film_prefere {
+    left: 7%;
+    position: relative;
+    display: block;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+    border-radius: 20px;
+    text-align: center;
+    font-family: Hind;
+    width: min-content;
+    color: black;
+    text-decoration: none;
+    background-color: #fff;
+}
+
+.film_prefere img{
+
+    width: 250px;
+    height: auto;
+    border-top-right-radius: 20px;
+    border-top-left-radius: 20px;
+    
+}
+
+.presentation_team{
+    margin-left: 100px;
+    margin-right: 100px;
+    margin-bottom: 50px;
+    background-color: #fff;
+    color:#000;
+    border-top-right-radius: 20px;
+    border-top-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    border-bottom-left-radius: 20px;
+    font-family: Hind;
+}
+
+.bloc_pres_team {
+    margin-left: 50px;
+    margin-right: 50px;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    font-family: Hind;
+}
+
+.bloc_film_pres{
+    display : flex;
+    gap : 30px;
+    font-family: Hind;
+}
+
+.main_presentation{
+    margin-top: 200px;
+    font-family: Hind;
+}
+
+.main_doc{
+    margin-left: 100px;
+    margin-right: 100px;
+    margin-bottom: 50px;
+    margin-top: 100px;
+    background-color: #fff;
+    color:#000;
+    border-top-right-radius: 20px;
+    border-top-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    border-bottom-left-radius: 20px;
+    font-family: Hind;
+}
+
+/* Le style pour les boutons de connexion et d'inscription */
+.button-link {
+    display: inline-block;
+    padding: 10px 20px;
+    margin: 0 10px;
+    text-decoration: none;
+    border-radius: 20px;
+    background-color: #c00505; /* Couleur de fond */
+    color: #fff; /* Couleur du texte */
+    border: 2px solid #991910; /* Bordure */
+    transition: background-color 0.3s, color 0.3s; /* Animation de transition */
+    opacity: 0.8; /* Opacité par défaut */
+}
+
+.button-link:hover {
+    background-color: #141418; /* Nouvelle couleur de fond au survol */
+    color: #fff; /* Nouvelle couleur du texte au survol */
+    opacity: 1; /* Pleinement opaque au survol */
+}
+
+#btn_con{
+    margin-bottom: 10px;
+}

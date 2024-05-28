@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="./css/style_conn_inscr.css" />
+</head>
+<body>
+    <div id="overlay">
+    <main class="menu-connexion-inscription">
+        <h2 class="menu-connexion-inscription--titre">Bienvenue</h2>
+        <form class="menu-connexion-inscription--formulaire">
+           
+            <label for="connexion-inscription-utilisateur" id="label_utilisateur">E-mail</label>
+            <input type="email" name="email" id="connexion-inscription-utilisateur" placeholder="exemple@domaine.com" required>
+            
+            <label for="connexion-inscription-mdp" id="label_mdp">Mot de passe</label>
+            <input type="password" name="mdp" id="connexion-inscription-mdp" placeholder="Mot de Passe" required>
+
+            <button type="button" name="submit" onclick="connexion()">Se connecter</button>
+        </form>
+        <p class="menu-connexion-inscription--redirection">Nouveau sur le site ? <a href="inscription.html">Inscrivez-vous</a> !</p>
+    </main>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.2.0/crypto-js.min.js"></script>
+    <script src="./js/connexion_inscription.js"></script>
+    </div>
+</body>
+</html>

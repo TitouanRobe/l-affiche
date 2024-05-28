@@ -1,0 +1,144 @@
+@font-face 
+{
+    font-family: Hind;
+    src: url(./polices/Hind-Regular.ttf);
+    font-weight: 400;
+}
+
+@font-face 
+{
+    font-family: Hind;
+    src: url(./polices/Hind-Light.ttf);
+    font-weight: 200;
+}
+
+@font-face
+{
+    font-family: ADAM;
+    src: url(./polices/ADAM.CG\ PRO.otf);
+}
+
+
+body {
+    margin: 0;
+    overflow: hidden; /* Empêche tout débordement du contenu en cas de barre de défilement */
+}
+
+#overlay {
+    position: relative;
+    height: 100vh;
+    background-image: url('background.png'); 
+    background-size: cover;
+    background-position: center;
+    color: #fff;
+    overflow: hidden; /* Empêche tout débordement du contenu en cas de barre de défilement */
+
+}
+
+#overlay::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.90);
+    z-index: 1;
+}
+
+.menu-connexion-inscription {
+    position: relative;
+    z-index: 2; 
+}
+
+#label_mdp,#label_utilisateur,#label_pseudo{
+    color:#c9c0bf;
+    font-size: 14px;
+    margin-bottom: 5px;
+}
+
+
+#connexion-inscription-mdp::placeholder,#connexion-inscription-utilisateur::placeholder,#connexion-inscription-pseudo::placeholder{
+    font-size: 15px;
+    
+}
+
+#connexion-inscription-mdp,#connexion-inscription-pseudo,#connexion-inscription-utilisateur{
+    border-radius: 5px;
+    margin-bottom: 20px;
+    background-color: #1e1e24;
+    color: #c9c0bf; 
+    font-size: 14px;
+    font-family: Hind;
+}
+
+.menu-connexion-inscription--titre {
+    text-align: center;
+    margin-top: 30px;
+    margin-bottom: 50px;
+    color: white;
+    font-family: Hind;
+}
+
+.menu-connexion-inscription--formulaire {
+    display: flex;
+    flex-direction: column;
+    width: 550px;
+    margin: 0 auto;
+    padding: 30px;
+    box-sizing: border-box;
+    border-radius: 10px;
+}
+
+.menu-connexion-inscription--formulaire label, input {
+    font-size: 20px;
+}
+
+.menu-connexion-inscription--formulaire label {
+    margin-bottom: 3px;
+}
+
+.menu-connexion-inscription--formulaire input {
+    padding: 10px 25px;
+    border: none;
+    /* border-radius: 10px; */
+    margin-bottom: 25px;
+}
+
+
+.menu-connexion-inscription--formulaire button {
+    height: 50px;
+    margin-top: 30px;
+    border: none;
+    border-radius: 10px;
+    background-color: #D90429;
+    color: white;
+    text-align: center;
+    font-size: 24px;
+    font-weight: 600;
+}
+
+.menu-connexion-inscription--formulaire h3 {
+    text-align: center;
+    font-size: 30px;
+    margin-top: 0;
+    margin-bottom: 20px;
+}
+
+.menu-connexion-inscription--redirection {
+    text-align: center;
+    color: #8c8484;
+    font-family: Hind;
+}
+
+.menu-connexion-inscription--redirection a{
+    font-weight: bold;
+    color: #c9c0bf;
+    text-decoration:none;
+    font-family: Hind;
+
+}
+
+.menu-connexion-inscription--redirection a:hover{
+    color:white;
+}

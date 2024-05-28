@@ -1,0 +1,52 @@
+<!-- top_movies.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script defer src="./js/genre.js"></script>
+    <title>Top Movies</title>
+    <link rel="stylesheet" href="./css/stylegenre.css">
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+<header class="en-tete-image" style="background-image: url('');">
+	
+	<a href="./accueil.html" class="retour_accueil genre"><h1>L'AFFICHE</h1></a>
+   
+    <form action="./recherche.html" method="get">
+        <div class="en-tete-image--flex">
+            <div class="en-tete-image--input">
+                <img src="pictures/search-line.svg" alt="Icone Rechercher">
+                <input type="text" placeholder="Rechercher un film" name="recherche" required>
+            </div>
+        </div>
+    </form>
+
+    </header>
+    <body>
+        <div class="content-container">
+            <h1>Meilleurs films du genre</h1>
+        
+            <!-- Container for displaying movies -->
+            <div class="films_recherche genres"></div>
+        
+            <!-- Call the getTopMovies function when the page loads -->
+            <script>
+                document.addEventListener('DOMContentLoaded', function () {
+                   // Retrieve the genre parameter from the URL
+                   const urlParams = new URLSearchParams(window.location.search);
+                   const genre = urlParams.get('genre');
+    
+                   // Call the function from app.js with the retrieved genre
+                   document.querySelector('.content-container h1').textContent = `Meilleurs films du genre ${genre}`
+                   getBestNoteByGenre(genre);
+               });
+
+
+           </script>
+        </div>
+   </body>
+
+        </script>
+    </body>
+</html>

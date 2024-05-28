@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="css/polices.css">
+    <title>Recherche</title>
+</head>
+
+<body>
+    <header class="en-tete-image" style="background-image: url('');">
+        <div class="en-tete-image--degrade"></div>
+        <div class="en-tete-image--contenu">
+            <a href="./accueil.html" class="retour_accueil"><h1>L'AFFICHE</h1></a>
+        <form action="./recherche.html" method="get">
+            <div class="en-tete-image--flex">
+                <div class="en-tete-image--input">
+                    <img src="pictures/search-line.svg" alt="Icone Rechercher">
+                    <input type="text" placeholder="Rechercher un film" name="recherche" required>
+                </div>
+            </div>
+        </form>
+        <div style="position: absolute; top: 10px; right: 10px; z-index: 1000;">
+            <a href="connexion.html" id="btn_con" class="button-link">Connexion</a>
+            <a href="inscription.html" id="btn_insc" class="button-link">Inscription</a>
+            <a onclick="deconnexion()"  id="btn_deco" class="button-link">déconnexion</a>
+        </div>
+            <div class="bloc-film">
+                <div class="poster-film-container">
+                    <img src="" alt="Poster du film" class="poster-film">
+                    <img src="./pictures/warning.svg" alt="" class="icon-container" title="Signaler l'affiche" onclick="signalerAfficheMovie()">
+                </div>
+                <div class="bloc-film-infos">
+                     
+                    <div class="bloc-titre">
+                        <h2 class="titre-film"></h2>
+                        <div class="supplement-titre">
+                            <span class="annee_sortie"></span>
+                            <span></span>
+                            <span class="duree_film"></span>
+                        </div>
+
+                    </div>
+
+                    <div class="bloc-infos">
+
+                        <div class="genres">
+                            <ul>
+
+                            </ul>
+                        </div>
+                        
+                        <div class="bloc-note">
+                            
+                            <div class="bloc-me-noter" onmouseover="changeStarColor(true)" onmouseout="changeStarColor(false)" onclick="togglePopup()">
+                                <img src="./pictures/star-solid.svg" alt="" id="starIcon">
+                                <p>Noter</p>
+                            </div>
+
+
+                            <div class="bloc-nb-vues">
+                                <span></span>
+                            </div>
+                            
+                            <div class="note-uti">
+                                <span></span>
+                            </div>
+
+                              
+                            <div class="container">
+                                <div class="circular-progress">
+                                <div class="value-container">
+                                    <span class="note">0</span>
+                                </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </header>
+
+
+    <div class="popup" id="popup-1">
+        <div class="overlay"></div>
+        <div class="content">
+            <div class="close-btn" onclick="togglePopup()">&times;</div>
+                <h3>Noter ...</h3>
+                <div class="star">
+                    <img src="./pictures/star-solid.svg" alt="" onmouseover="changeRatingStarColor(this)" onmouseout="resetHoveredRatingStars()" onclick="selectRating(this)">
+                    <img src="./pictures/star-solid.svg" alt="" onmouseover="changeRatingStarColor(this)" onmouseout="resetHoveredRatingStars()" onclick="selectRating(this)">
+                    <img src="./pictures/star-solid.svg" alt="" onmouseover="changeRatingStarColor(this)" onmouseout="resetHoveredRatingStars()" onclick="selectRating(this)">
+                    <img src="./pictures/star-solid.svg" alt="" onmouseover="changeRatingStarColor(this)" onmouseout="resetHoveredRatingStars()" onclick="selectRating(this)">
+                    <img src="./pictures/star-solid.svg" alt="" onmouseover="changeRatingStarColor(this)" onmouseout="resetHoveredRatingStars()" onclick="selectRating(this)">
+                    <img src="./pictures/star-solid.svg" alt="" onmouseover="changeRatingStarColor(this)" onmouseout="resetHoveredRatingStars()" onclick="selectRating(this)">
+                    <img src="./pictures/star-solid.svg" alt="" onmouseover="changeRatingStarColor(this)" onmouseout="resetHoveredRatingStars()" onclick="selectRating(this)">
+                    <img src="./pictures/star-solid.svg" alt="" onmouseover="changeRatingStarColor(this)" onmouseout="resetHoveredRatingStars()" onclick="selectRating(this)">
+                    <img src="./pictures/star-solid.svg" alt="" onmouseover="changeRatingStarColor(this)" onmouseout="resetHoveredRatingStars()" onclick="selectRating(this)">
+                    <img src="./pictures/star-solid.svg" alt="" onmouseover="changeRatingStarColor(this)" onmouseout="resetHoveredRatingStars()" onclick="selectRating(this)">
+                </div>
+                <button id="noter-film" onclick="RatingStar()" disabled>Noter</button>
+        </div>
+    </div>
+
+    <main class="details-film">
+
+        <div class="bloc-synopsys">
+            <h5>Synopsis</h5>
+            <p></p>
+        </div>
+
+        
+        <div class="distribution">
+            <h3>Distribution</h3>
+
+            <div class="distribution-personnes">
+                
+            </div>
+        </div>
+
+        <div class="bloc-recommandations">
+
+            <h3>On vous recommande</h3>
+
+            <div class="recommendations">
+            
+            </div>
+
+            <h3 class="nom_directeur">De</h3>
+        
+            <div class="recommendations directeur">
+
+
+            </div>
+        </div>
+        
+    </main>
+</body>
+
+</html>
+<script src="./js/movie.js"></script>
+<script defer src="./js/circular_bar.js"></script>

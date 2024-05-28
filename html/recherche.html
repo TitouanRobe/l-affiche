@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/style.css">
+
+    <title>Résultats de la recherche</title>
+</head>
+<body>
+    <header class="en-tete-image" style="background-image: url('./pictures/background.png');">
+        <div class="en-tete-image--degrade recherche"></div>
+        <div class="en-tete-image--contenu recherche">
+
+        <a href="./accueil.html" class="retour_accueil"><h1>L'AFFICHE</h1></a>
+        
+        <form action="./recherche.html" method="get">
+            <div class="en-tete-image--flex">
+                <div class="en-tete-image--input">
+                    <img src="pictures/search-line.svg" alt="Icone Rechercher">
+                    <input type="text" placeholder="Rechercher un film" name="recherche" required>
+                </div>
+            </div>
+        </form>
+    </header>
+
+    <main class="details-film">
+
+        <div class="main__recherche">
+
+            <h3>Résultat de la recherche : </h3>
+
+            <div class="films_recherche">
+            
+            </div>
+        
+
+        </div>
+        
+    </main>
+</body>
+</html>
+<script src="./js/recherche.js"></script>

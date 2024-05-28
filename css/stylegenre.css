@@ -1,0 +1,282 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+@font-face 
+{
+    font-family: Hind;
+    src: url(./polices/Hind-Light.ttf);
+    font-weight: 200;
+}
+
+@font-face
+{
+    font-family: ADAM;
+    src: url(./polices/ADAM.CG\ PRO.otf);
+}
+
+:root {
+    font-size: 16px;
+    font-family: 'Open Sans';
+    --text-primary: #b6b6b6;
+    --text-secondary: #ececec;
+    --bg-primary: #23232e;
+    --bg-secondary: #141418;
+    --transition-speed: 600ms;
+  }
+  
+  
+body{
+    font-family: Poppins;
+    margin: 0;
+    background-color: #010101;
+    color: #eee;
+}
+body::-webkit-scrollbar {
+    width: 0.25rem;
+}
+  
+body::-webkit-scrollbar-track {
+    background: #1e1e24;
+}
+  
+body::-webkit-scrollbar-thumb {
+    background: #6649b8;
+}
+
+main {
+    margin-left: 0rem;
+    padding: 1rem;
+  }
+
+.navbar {
+    position: fixed;
+    background-color: var(--bg-primary);
+    transition: width 600ms ease;
+    overflow: hidden;
+    z-index: 1000;
+    
+}
+
+.navbar-nav {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
+}
+
+
+
+.nav-item {
+    width: 100%;
+}
+
+.nav-item:last-child {
+    margin-top: auto;
+}
+
+.nav-link {
+    display: flex;
+    align-items: center;
+    height: 5rem;
+    color: var(--text-primary);
+    text-decoration: none;
+    filter: grayscale(100%) opacity(0.7);
+    transition: var(--transition-speed);
+}
+
+.nav-link:hover {
+    filter: grayscale(0%) opacity(1);
+    background: var(--bg-secondary);
+    color: var(--text-secondary);
+}
+
+.link-text {
+    display: none;
+    margin-left: 1rem;
+}
+
+.nav-link svg {
+    width: 2rem;
+    min-width: 2rem;
+    margin: 0 1.5rem;
+}
+
+.fa-primary {
+    color: #dd0202;
+}
+
+.fa-blanc {
+    color: #ffffff;
+}
+
+.fa-secondary {
+    color: #d10808;
+}
+
+.fa-primary,
+.fa-secondary {
+    transition: var(--transition-speed);
+}
+
+.logo {
+    font-weight: bold;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+    text-align: center;
+    color: var(--text-secondary);
+    background: var(--bg-secondary);
+    font-size: 1.5rem;
+    letter-spacing: 0.3ch;
+    width: 100%;
+}
+
+.logo svg {
+    transform: rotate(0deg);
+    transition: var(--transition-speed);
+}
+
+.logo-text
+{
+    display: inline;
+    position: absolute;
+    left: -999px;
+    transition: var(--transition-speed);
+}
+
+.navbar:hover .logo svg {
+    transform: rotate(-180deg);
+}
+
+/* Small screens */
+@media only screen and (max-width: 600px) {
+    .navbar {
+    bottom: 0;
+    width: 100vw;
+    height: 5rem;
+    }
+
+    .logo {
+    display: none;
+    }
+
+    .navbar-nav {
+    flex-direction: row;
+    }
+
+    .nav-link {
+    justify-content: center;
+    }
+
+    main {
+    margin: 0;
+    }
+}
+
+/* Large screens */
+@media only screen and (min-width: 600px) {
+    .navbar {
+    top: 0;
+    width: 5rem;
+    height: 100vh;
+    }
+
+    .navbar:hover {
+    width: 16rem;
+    }
+
+    .navbar:hover .link-text {
+    display: inline;
+    }
+
+    .navbar:hover .logo svg
+    {
+    margin-left: 11rem;
+    }
+
+    .navbar:hover .logo-text
+    {
+    left: 0px;
+    }
+}
+
+.dark {
+    --text-primary: #b6b6b6;
+    --text-secondary: #ececec;
+    --bg-primary: #23232e;
+    --bg-secondary: #141418;
+}
+
+.theme-icon {
+    display: none;
+}
+
+.dark #darkIcon {
+    display: block;
+}
+
+
+body, html {
+    height: 100%;
+    margin: 0;
+}
+
+.content-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.content-container h1 {
+
+    padding-top: 80px;
+}
+
+
+/* Example CSS for styling */
+.movie-container {
+    display: flex;
+    width: 200px;
+    height: 600px;
+    margin: 10px;
+    margin-left: 150px; /* Adjust this value to shift to the right */
+    max-width: calc(100% - 30px); /* Adjust the max-width to leave space for the movie container and account for margin */
+}
+
+.movie-poster {
+    width: 100%; /* Make the image fill the container */
+    height: 100%; /* Make the image fill the container */
+    object-fit: cover; /* Ensure the image maintains its aspect ratio */
+}
+
+.movie-details {
+    flex: 1; /* Make the details container take up remaining space */
+    padding: 10px;
+    box-sizing: border-box;
+    margin-left: 150px;
+}
+
+.best-note-by-genre-container {
+    display: flex;
+    width: 200px;
+    height: 600px;
+    margin: 10px;
+    margin-left: 150px; /* Adjust this value to shift to the right */
+    max-width: calc(100% - 30px); /* Adjust the max-width to leave space for the movie container and account for margin */
+}
+
+.content-container h1{
+
+    font-family: ADAM;
+    color: #fff;
+    font-size: 30px;
+}
+
+.retour_accueil.genre{
+
+	margin-top: 30px;
+	margin-left: 30px;
+}
