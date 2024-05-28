@@ -13,3 +13,11 @@ Grâce à un algorithme de recommandations (filtrage collaboratif basé sur le c
 - **Recherche de Films** : Fonctionnalité de recherche pour trouver des films par titre, mots clés, ...
 - **Détails des Films** : Affichage des informations détaillées sur chaque film (résumé, acteurs, genres, etc...).
 - **Détails des acteurs** : Affichage des différents films dans lequel l'acteur a joué.
+
+
+## Technologies Utilisées
+
+- **Front-end** : HTML, CSS, JavaScript
+- **Back-end** : Python, création d'une API REST avec FastAPI
+- **Base de Données** : PostgreSQL 
+- **Algorithmes de Recommandation** : Python, Méthode utilisée : filtrage collaboratif basé sur le contenu 
